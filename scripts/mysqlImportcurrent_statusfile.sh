@@ -111,7 +111,7 @@ COALESCE(CONCAT('set to ', SCHEMA()), 'not set')) as 'Connection Info';
 SET @@sql_log_off = 1;
 SET @@autocommit = 1;
 SET GLOBAL local_infile=ON;
-
+Truncate table output;
 DROP TABLE IF EXISTS tmp_results;
 
 CREATE TEMPORARY TABLE tmp_results(
@@ -158,7 +158,7 @@ and fg.id = st.isscaap
 where st.stock_id is null;
 
 
-INSERT INTO results
+INSERT INTO output
 (area_id,
 current_year,
 reference_id,

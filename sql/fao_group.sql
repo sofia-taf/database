@@ -1,0 +1,55 @@
+/*
+
+*/
+
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (11,'Carps, barbels and other cyprinids','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (12,'Tilapias and other cichlids','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (13,'Miscellaneous freshwater fishes','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (21,'Sturgeons, paddlefishes','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (22,'River eels','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (23,'Salmons, trouts, smelts','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (24,'Shads','current','Shads');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (25,'Miscellaneous diadromous fishes','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (31,'Flounders, halibuts, soles','current','Flounder');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (32,'Cods, hakes, haddocks','current','Cods');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (33,'Miscellaneous coastal fishes','current','Coastal');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (34,'Miscellaneous demersal fishes','current','Demersal');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (35,'Herrings, sardines, anchovies','current','Herring');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (36,'Tunas, bonitos, billfishes','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (37,'Miscellaneous pelagic fishes','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (38,'Sharks, rays, chimaeras','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (39,'Marine fishes not identified','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (41,'Freshwater crustaceans','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (42,'Crabs, sea-spiders','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (43,'Lobsters, spiny-rock lobsters','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (44,'King crabs, squat-lobsters','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (45,'Shrimps, prawns','current','Shrimps');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (46,'Krill, planktonic crustaceans','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (47,'Miscellaneous marine crustaceans','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (51,'Freshwater molluscs','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (52,'Abalones, winkles, conchs','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (53,'Oysters','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (54,'Mussels','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (55,'Scallops, pectens','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (56,'Clams, cockles, arkshells','current','Clams');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (57,'Squids, cuttlefishes, octopuses','current','Squids');
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (58,'Miscellaneous marine molluscs','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (61,'Blue-whales, fin-whales','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (62,'Sperm-whales, pilot-whales','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (63,'Eared seals, hair seals, walruses','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (64,'Miscellaneous aquatic mammals','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (71,'Frogs and other amphibians','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (72,'Turtles','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (73,'Crocodiles and alligators','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (74,'Sea-squirts and other tunicates','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (75,'Horseshoe crabs and other arachnoids','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (76,'Sea-urchins and other echinoderms','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (77,'Miscellaneous aquatic invertebrates','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (81,'Pearls, mother-of-pearl, shells','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (82,'Corals','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (83,'Sponges','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (91,'Brown seaweeds','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (92,'Red seaweeds','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (93,'Green seaweeds','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (94,'Miscellaneous aquatic plants','current',NULL);
+INSERT INTO `fao_group` (`id`,`grp_name`,`status`,`srt_name`) VALUES (999,'Other','current','Other');

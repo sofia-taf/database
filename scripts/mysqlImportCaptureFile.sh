@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ######################################################################
-#  Name - mysqlExportCaptureFile.sh
+#  Name - mysqlImportAreaFile.sh
 #  Desc- runs a sql script to specified db
 #  Param - l = login for mysql db default = mysql
 #        - u = user default = mysql
@@ -9,7 +9,6 @@
 #        - d = directory for file export (C://temp) 
 #        - f = filename for file export (CAPTURE_QUANTITY)
 #        - a = area
-#        - m = monitored data by status and trends (1, 0)
 #####################################################################
 LOGFILE="C://tmp/logs$(date +'%y%m%d%H%MS').txt"
 # log message
@@ -35,13 +34,12 @@ function validateInput {
   sqlDir="C:/tmp"
   sqlFile="CAPTURE_QUANTITY.csv"
   area="37"
-  monitoring="1"
   terminated=','
   enclosed='"'
   
   
   PARIN=1
-  while getopts ":l:s:u:d:f:c:" opt
+  while getopts ":l:s:u:d:f:a:" opt
   do 
     case "${opt}" in
       l)
@@ -62,9 +60,6 @@ function validateInput {
       a)  
         area="$OPTARG"
         ;;
-      m)  
-        monitored="$OPTARG"
-        ;; 
       :)
         returnMsg= "mysqlExecute Requires: -- $OPTARG"
         usage
@@ -134,6 +129,8 @@ UNION ALL
 select id as stock_id, st_code, NULL as stock_update_id
 from stock) as p)) as st on tc.cap_stock = st.st_code
 where st.stock_id is null;
+
+truncate table capture; 
 
 INSERT INTO capture(area_id, stock_id, stock_update_id, year, biomass, unit, qualifier, reference_id)
 SELECT ar.id, st.stock_id,st.stock_update_id, tc.cap_year, tc.cap_value, tc.cap_measure, tc.cap_qualifier, 445
