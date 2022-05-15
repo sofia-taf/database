@@ -6,8 +6,8 @@
 #  Param - l = login for mysql db default = mysql
 #        - u = user default = mysql
 #        - s = schema default = sofiatsaf 
-#        - d = directory for file export (C://temp) 
-#        - f = filename for file export (CAPTURE_QUANTITY)
+#        - d = directory for file export (C://tmp) 
+#        - f = filename for file export (fao_current_results.csv)
 #        - a = area
 #        - m = monitored data by status and trends (1, 0)
 #####################################################################
@@ -140,7 +140,7 @@ and fg.id = st.isscaap
 where st.stock_id is null;
 
 
-INSERT INTO results
+INSERT INTO output_timeseries
 (area_id,
 current_year,
 reference_id,
