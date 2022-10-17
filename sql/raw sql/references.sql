@@ -1,0 +1,12 @@
+/*
+
+*/
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (445,'AO.FishStatj. License: CC BY-NC-SA 3.0 IGO. Extracted from: http://www.fao.org/fishery/static/Data/Capture_2021.1.2.zip. Data of Access: 11-09-2021.','FishStatJ','Statistics and Information Service (FIPS) Food and Agriculture Organization of the United Nations (FAO) Viale delle Terme di Caracalla. 00153 Rome, ITALY','http://www.fao.org/fishery/static/Data/Capture_2021.1.2.zip','current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (446,'FAO.ASFIS. License: CC BY-NC-SA 3.0 IGO. Extracted from: http://www.fao.org/fishery/static/ASFIS/ASFIS_sp.zip. Data of Access: 11-09-2021.”','ASFIS','Statistics Team (NFISS) Fisheries Division (NFI) Food and Agriculture Organization of the United Nations Viale delle Terme di Caracalla 00153 Rome, ITALY','http://www.fao.org/fishery/static/ASFIS/ASFIS_sp.zip','current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (447,'FAO.CTab.All: Added Area for FAO Analysis','FAO',NULL,NULL,'current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (448,'FAO.Catches37: Excel File provided by: Vasconcellos, Marcelo (NFIFM) for tier1 area 37','FAO','Marcelo.Vasconcellos@fao.org',NULL,'current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (449,'FAO. 2020. The State of World Fisheries and Aquaculture 2020. Sustainability in action. Rome.','FAO','www.fao.org/contact-us/licence-request','https://doi.org/10.4060/ca9229en','current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (450,'Anne-EliseTier1Placeholder','FAO',NULL,NULL,'current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (451,'Anne-EliseTier3Placeholder','FAO',NULL,NULL,'current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (452,'FAO. 2020. The State of World Fisheries and Aquaculture 2020. Sustainability in action. Rome.','FAO','www.fao.org/contact-us/licence-request','http://www.fao.org/publications','current');
+INSERT INTO `reference` (`id`,`citation`,`publication_DOI`,`contact`,`data_DOI_URL`,`status`) VALUES (453,'SOFIA-TSAF Analysis 2020','FAO','github Sofia-tsaf',NULL,'current');
