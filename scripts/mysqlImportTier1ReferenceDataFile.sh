@@ -30,7 +30,7 @@ function validateInput {
 # set defaults
   loginval="mysql_rw"
   user="mysql"
-  schema="tafp"
+  schema="sofia_taf"
   sqlDir="C://Users/Nicole/Desktop/fish/rishi raw data/area 31"
   sqlFile="area31_tier1.csv"
   area="31"
@@ -128,7 +128,7 @@ CREATE TABLE tmp_tier1data(
   location_code VARCHAR(200) DEFAULT NULL,
   status VARCHAR(200) DEFAULT NULL,
   assessed int DEFAULT NULL,
-  reference_id int DEFAULT NULL,
+  reference_group_id int DEFAULT NULL,
   cap_year INT DEFAULT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=295 DEFAULT CHARSET=utf8mb4;
@@ -138,19 +138,55 @@ LOAD DATA
        FIELDS TERMINATED BY '${terminated}' ENCLOSED BY '${enclosed}' LINES TERMINATED BY '\n'
        (@isscaap,@cap_common,@cap_species,@location,@location_id,@status,@assessed,@reference_id,@cap_year)
        SET isscaap = @isscaap, cap_common=@cap_common, cap_species = @cap_species, location = @location, location_code = @location_id,
-       status = @status, assessed = @assessed, reference_id = @reference_id, cap_year = @cap_year;
+       status = @status, assessed = @assessed, reference_group_id = @reference_group_id, cap_year = @cap_year;
 
-SELECT distinct tc.cap_stock
+SELECT distinct tc.cap_species
 FROM tmp_tier1data tc
-LEFT JOIN ((select distinct stock_id, st_code, stock_update_id
+LEFT JOIN ((select distinct species_id, st_code, english_name, species_update_id
 from (
-select stock_id, fao_scientific_name as st_code, id as stock_update_id
-from stock_update 
+select species_id, fao_scientific_name as st_code, fao_common_name as english_name, id as species_update_id
+from asfis_fao_species
 UNION ALL 
-select id as stock_id, scientific_name as st_code, NULL as stock_update_id
-from stock) as p)) as st on tc.cap_species = st.st_code
-where st.stock_id is null;
+select id as species_id, scientific_name as st_code,english_name, NULL as species_update_id
+from asfis_species) as p)) as st on tc.cap_species = st.st_code or tc.cap_species = st.english_name
+where st.species_id is null;
 
+INSERT INTO `sofia_taf`.`output`
+(`area_id`,
+`current_year`,
+`reference_group_id`,
+`species_group`,
+`status`,
+`tier`,
+`species_id`,
+`species_update_id`,
+`location_id`)
+SELECT 305,
+tc.cap_year,
+rg.reference_group_id,
+st.isscaap,
+tc.status,
+1,
+st.species_id,
+st.species_update_id,
+loc.location_id
+FROM tmp_tier1data tc
+JOIN reference_group rg on tc.reference_id = rg.reference_group_id
+JOIN location loc on tc.location_code = loc.location_id
+LEFT JOIN ((select distinct species_id,isscaap, st_code, english_name, species_update_id
+from (
+select species_id, fao_scientific_name as st_code,isscaap, fao_common_name as english_name, id as species_update_id
+from asfis_fao_species
+UNION ALL 
+select id as species_id, scientific_name as st_code,isscaap,english_name, NULL as species_update_id
+from asfis_species) as p)) as st on tc.cap_species = st.st_code or tc.cap_species = st.english_name
+group by tc.cap_year,
+rg.reference_group_id,
+st.isscaap,
+tc.status,
+st.species_id,
+st.species_update_id,
+loc.location_id;
 
  
 SET GLOBAL local_infile=OFF;
