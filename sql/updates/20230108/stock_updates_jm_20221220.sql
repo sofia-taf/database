@@ -1,0 +1,3 @@
+-- Update from email Jeremy Mendoza on 12/20
+-- update stock set species_number =2,geographical_scope='Data not provided by Jeremy Mendoza' where stock_id =155;
+-- update stock set species_number =1,geographical_scope='Data not provided by Jeremy Mendoza' where stock_id in (159,170,172,174);
