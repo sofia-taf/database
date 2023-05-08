@@ -30,10 +30,9 @@ function validateInput {
 # set defaults
   loginval="mysql_rw"
   user="mysql"
-  schema="tafp"
-  sqlDir="C:/tmp"
-  sqlFile="ASFIS_sp_2021.txt"
-  area="37"
+  schema="sofia_taf"
+  sqlDir="C:\\tmp"
+  sqlFile="ASFIS_sp_2022_REV1.txt"
   terminated=','
   enclosed='"'
   
@@ -98,14 +97,14 @@ SET GLOBAL local_infile=ON;
 
 LOAD DATA 
   LOCAL INFILE '"${filedir}"'
-  IGNORE INTO TABLE stock
+  IGNORE INTO TABLE asfis_species_new
        FIELDS TERMINATED BY '${terminated}' ENCLOSED BY '${enclosed}' LINES TERMINATED BY '\n'
        IGNORE 1 LINES
        (ISSCAAP, @txocode, 3A_CODE, Scientific_name, English_name, 
        @french_name, @spanish_name, @arabic_name,
        @chinese_name, @russian_name, @author, Family, @order, @stat)
        SET isscaap = ISSCAAP, 3a_code = 3A_CODE, scientific_name = Scientific_name, 
-       english_name = English_name, family = Family, reference_id = 446;
+       english_name = English_name, family = Family, reference_id = 556;
 SET GLOBAL local_infile=OFF;
 COMMIT;
 "

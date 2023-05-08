@@ -30,10 +30,9 @@ function validateInput {
 # set defaults
   loginval="mysql_rw"
   user="mysql"
-  schema="tafp"
+  schema="sofia_taf"
   sqlDir="C:/tmp"
-  sqlFile="CAPTURE_QUANTITY.csv"
-  area="37"
+  sqlFile="Capture_Quantity.csv"
   terminated=','
   enclosed='"'
   
@@ -109,43 +108,40 @@ CREATE TEMPORARY TABLE tmp_capture(
 ) ENGINE=InnoDB AUTO_INCREMENT=295 DEFAULT CHARSET=utf8mb4;
 LOAD DATA 
   LOCAL INFILE '"${filedir}"'
-  INTO TABLE tmp_capture
-       FIELDS TERMINATED BY '${terminated}' ENCLOSED BY '${enclosed}' LINES TERMINATED BY '\n'
+  INTO TABLE tmp_capture 
+       FIELDS TERMINATED BY '${terminated}' ENCLOSED BY '${enclosed}' LINES TERMINATED BY '\r\n'
        IGNORE 1 LINES
        (@UN_CODE,@ALPHA_3_CODE,@AREACODE,@MEASURE,@PERIOD,@VALUE,@STATUS)
        SET cap_stock = @ALPHA_3_CODE, cap_area = @AREACODE, cap_year = @PERIOD,
        cap_value = @VALUE, cap_measure = @MEASURE, cap_qualifier = @STATUS;
+SELECT count(*) FROM sofia_taf.tmp_capture;
 UPDATE tmp_capture set cap_area = CONCAT('0',cap_area) where length(cap_area)=1;
 SELECT distinct cap_area from tmp_capture;
-
 SELECT distinct tc.cap_stock
 FROM tmp_capture tc
 LEFT JOIN area ar on tc.cap_area = ar.ar_code
 LEFT JOIN ((select distinct stock_id, st_code, stock_update_id
 from (
-select stock_id, fao_3code as st_code, id as stock_update_id
-from stock_update 
+select species_id as stock_id, fao_3code as st_code, id as stock_update_id
+from asfis_fao_species 
 UNION ALL 
 select id as stock_id, st_code, NULL as stock_update_id
-from stock) as p)) as st on tc.cap_stock = st.st_code
+from asfis_species) as p)) as st on tc.cap_stock = st.st_code
 where st.stock_id is null;
 
-truncate table capture; 
-
-INSERT INTO capture(area_id, stock_id, stock_update_id, year, biomass, unit, qualifier, reference_id)
-SELECT ar.id, st.stock_id,st.stock_update_id, tc.cap_year, tc.cap_value, tc.cap_measure, tc.cap_qualifier, 445
+INSERT INTO fishstatj_capture(area_id, species_id, species_update_id, year, biomass, unit, qualifier, reference_group_id)
+SELECT ar.id, st.stock_id,st.stock_update_id, tc.cap_year, tc.cap_value, tc.cap_measure, tc.cap_qualifier, 738
 FROM tmp_capture tc
 LEFT JOIN area ar on tc.cap_area = ar.ar_code
 LEFT JOIN (select stid.id as stock_id, case when stup.fao_3code is not null then stup.fao_3code else stid.st_code end as st_code, stup.id as stock_update_id
-from stock stid
-left join stock_update stup on stid.id = stup.stock_id
-UNION ALL 
-select st.id as stock_id, st.st_code, NULL as stock_update_id
-from stock st
-join stock_update stup on st.id = stup.stock_id and st.st_code <> fao_3code
-group by st.id, st.st_code) as st on tc.cap_stock = st.st_code;
+          from asfis_species stid
+          left join asfis_fao_species stup on stid.id = stup.species_id
+          UNION ALL 
+          select st.id as stock_id, st.st_code, NULL as stock_update_id
+          from asfis_species st
+          join asfis_fao_species stup on st.id = stup.species_id and st.st_code <> fao_3code
+          group by st.id, st.st_code) as st on tc.cap_stock = st.st_code;
 
-SET GLOBAL local_infile=OFF;
 COMMIT;
 "
 charset=utf8mb4
